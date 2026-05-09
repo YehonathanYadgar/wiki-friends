@@ -6,33 +6,27 @@ tags: [person]
 # רזי
 
 > [!summary]
-> Quiet, chill, quick to anger, bad at most things by joke-law, and somehow universally liked.
+> Quiet, chill, particular about how things go, and somehow universally liked.
 
 ## Vibe
 
 Razi is strongest in the older [AGI Vegas Group](../groups/agi-vegas.md), where he helps define the early game-night rhythm. He is part of the classic "when are we playing?" negotiation loop.
 
-Group canon says Razi is very quiet, gets angry quickly, is "bad at most things" according to joke lore, but is still universally liked and overall chill.
+Razi is very quiet, has strong opinions about how things should go, and is universally liked and overall chill.
 
 ## Superpowers
 
-- Can make scheduling feel like a confrontation.
+- Operates on his own schedule and owns it.
 - Pushes back when people try to manage him too tightly.
 - Strong "I will arrive when I arrive" aura.
-- Universally liked despite the slander.
-- Quiet until suddenly not quiet.
+- Universally liked.
+- Quiet until he has something worth saying.
 
 ## How He Speaks
 
 - Casual and direct.
-- Funny because it sounds like he is negotiating from a position of total sovereignty.
-- Good at short defiant lines.
-
-## Known Crimes
-
-- Being bad at most things, allegedly.
-- Getting angry quickly.
-- Being too liked for the roast economy to fully damage him.
+- Sounds like he is negotiating from a position of total sovereignty.
+- Good at short, confident lines.
 
 ## Recurring Bits
 
