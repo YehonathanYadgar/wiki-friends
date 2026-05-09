@@ -35,18 +35,6 @@
       });
       const data = await res.json();
       thinking.textContent = data.answer || data.error || "Something went wrong.";
-
-      if (data.sources && data.sources.length) {
-        const sourcesEl = document.createElement("div");
-        sourcesEl.className = "ask-sources";
-        data.sources.forEach(function (s) {
-          const a = document.createElement("a");
-          a.href = s.url;
-          a.textContent = s.title;
-          sourcesEl.appendChild(a);
-        });
-        thinking.appendChild(sourcesEl);
-      }
     } catch {
       thinking.textContent = "Could not reach the server. Try again.";
     } finally {
