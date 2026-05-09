@@ -99,10 +99,11 @@ exports.handler = async function (event) {
 
   const data = await oaiRes.json();
   const answer = data.choices?.[0]?.message?.content ?? "No answer received.";
+  const sources = pool.map((p) => ({ title: p.title, url: p.url }));
 
   return {
     statusCode: 200,
     headers: { ...CORS, "Content-Type": "application/json" },
-    body: JSON.stringify({ answer }),
+    body: JSON.stringify({ answer, sources }),
   };
 };

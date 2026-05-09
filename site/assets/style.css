@@ -252,6 +252,26 @@ pre code { padding: 0; border: 0; background: transparent; }
 .ask-submit:hover { background: var(--blue-dark); }
 .ask-submit:disabled, .ask-input:disabled { opacity: 0.6; cursor: not-allowed; }
 
+.ask-sources {
+  margin-top: 10px;
+  padding-top: 8px;
+  border-top: 1px solid var(--soft-line);
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.ask-sources a {
+  padding: 2px 9px;
+  background: var(--bg);
+  border: 1px solid var(--soft-line);
+  border-radius: 3px;
+  font-size: 12px;
+  color: var(--blue-dark);
+}
+
+.ask-sources a:hover { background: var(--callout); text-decoration: underline; }
+
 @media (max-width: 760px) {
   .topbar { padding: 8px 10px; }
   .menu-button { display: inline-block; }
