@@ -1,0 +1,10 @@
+.DS_Store
+
+# Local export archives and temporary files.
+exports/
+*.bak
+*.tmp
+
+# Python cache files from local tools.
+__pycache__/
+*.py[cod]
