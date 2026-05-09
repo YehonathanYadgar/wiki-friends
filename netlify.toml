@@ -2,3 +2,6 @@
   command = "python3 tools/build_site.py"
   publish = "site"
   functions = "netlify/functions"
+
+[functions]
+  included_files = ["netlify/functions/wiki-content.json"]
