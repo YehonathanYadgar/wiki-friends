@@ -17,6 +17,7 @@ WIKI = ROOT / "wiki"
 SITE = ROOT / "site"
 ASSETS = SITE / "assets"
 STATIC_ASSETS = ROOT / "site_static" / "assets"
+FUNCTIONS = ROOT / "netlify" / "functions"
 
 SKIP_PARTS = {"inbox"}
 SKIP_FILES = {WIKI / "log.md"}
@@ -269,6 +270,7 @@ def render_page(page: Page, pages: list[Page]) -> str:
   <header class="topbar">
     <button class="menu-button" aria-label="Open navigation">☰</button>
     <a class="brand" href="/index.html">Friend Group Wiki</a>
+    <a class="ask-chip" href="/ask.html">Ask AI</a>
     <input id="search" class="search" type="search" placeholder="Search the wiki">
   </header>
   <div class="layout">
@@ -287,6 +289,44 @@ def render_page(page: Page, pages: list[Page]) -> str:
 </body>
 </html>
 """
+
+
+def write_wiki_content(pages: list[Page]) -> None:
+    FUNCTIONS.mkdir(parents=True, exist_ok=True)
+    content = [
+        {"title": p.title, "section": p.section, "url": "/" + p.url, "content": p.src.read_text(encoding="utf-8")}
+        for p in pages
+    ]
+    (FUNCTIONS / "wiki-content.json").write_text(
+        json.dumps(content, ensure_ascii=False),
+        encoding="utf-8",
+    )
+
+
+def write_ask_page(pages: list[Page]) -> None:
+    body = (
+        "<h1>Ask the wiki</h1>\n"
+        "<p>Ask anything about the friend group. The AI answers based on the wiki pages.</p>\n"
+        '<div class="ask-box">\n'
+        '  <div class="ask-messages" id="askMessages"></div>\n'
+        '  <form class="ask-form" id="askForm">\n'
+        '    <input class="ask-input" id="askInput" type="text" placeholder="Ask a question…" autocomplete="off">\n'
+        '    <button class="ask-submit" type="submit">Ask</button>\n'
+        "  </form>\n"
+        "</div>\n"
+        '<script src="/assets/ask.js"></script>'
+    )
+    ask_page = Page(
+        src=WIKI / "index.md",
+        rel=Path("ask.md"),
+        out=SITE / "ask.html",
+        url="ask.html",
+        title="Ask AI",
+        section="ai",
+        summary="Ask questions about the friend group wiki using AI.",
+        body_html=body,
+    )
+    (SITE / "ask.html").write_text(render_page(ask_page, pages), encoding="utf-8")
 
 
 def write_assets(pages: list[Page]) -> None:
@@ -326,6 +366,8 @@ def main() -> int:
         page.out.write_text(render_page(page, pages), encoding="utf-8")
 
     write_assets(pages)
+    write_wiki_content(pages)
+    write_ask_page(pages)
     (SITE / "_redirects").write_text("/ /index.html 200\n", encoding="utf-8")
     print(f"Built {len(pages)} pages into {SITE}")
     return 0

@@ -1,4 +1,6 @@
 .DS_Store
+.env
+netlify/functions/wiki-content.json
 
 # Local export archives and temporary files.
 exports/
